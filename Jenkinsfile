@@ -3,12 +3,13 @@ pipeline {
 
     stages {
 
-        stage('Clone') {
+       stage('Clone') {
     steps {
         git branch: 'main',
             url: 'https://github.com/Tammeswar/new-project.git'
     }
 }
+
 
 
         stage('Maven Build') {
