@@ -1,4 +1,5 @@
-FROM tomcat:9-jre8
+FROM FROM tomcat:10.1-jdk17-temurin
+
 LABEL maintainer="Durga <durgaprasadsetti67@gmail.com>"
 
 EXPOSE 8080
