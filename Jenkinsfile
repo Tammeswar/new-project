@@ -15,32 +15,30 @@ pipeline {
             }
         }
 
-        stage('Stop & Remove Old Container') {
+        stage('Stop Old Container') {
             steps {
                 sh '''
-                docker stop azure || true
-                docker rm azure || true
+                docker stop contnr || true
+                docker rm contnr || true
                 '''
             }
         }
 
         stage('Remove Old Image') {
             steps {
-                sh '''
-                docker rmi amazon || true
-                '''
+                sh 'docker rmi img || true'
             }
         }
 
-        stage('Docker Image Build') {
+        stage('Docker Build') {
             steps {
-                sh 'docker build -t amazon .'
+                sh 'docker build -t img .'
             }
         }
 
         stage('Docker Deploy') {
             steps {
-                sh 'docker run -d -p 6060:8080 --name azure amazon'
+                sh 'docker run -d -p 6060:8080 --name contnr img'
             }
         }
     }
